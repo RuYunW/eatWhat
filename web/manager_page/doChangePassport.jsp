@@ -18,7 +18,6 @@
     User user = usersDao.find((String)session.getAttribute("username"));
     if(user.getPassword().equals(te_password)){
         out.print("密码正确");
-
     }else {
         out.print("密码错误");
     }
