@@ -13,10 +13,10 @@
 </head>
 <body>
 <%
-    String te_passport = request.getParameter("te_passport");
+    String te_password = request.getParameter("te_password");
     UsersDao usersDao = new UsersDao();
     User user = usersDao.find((String)session.getAttribute("username"));
-    if(user.getPassword().equals(te_passport)){
+    if(user.getPassword().equals(te_password)){
         out.print("密码正确");
 
     }else {

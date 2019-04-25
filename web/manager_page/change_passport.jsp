@@ -21,10 +21,10 @@
 <center>
 <div>
     <form action="doChangePassport.jsp">
-<input type="text" class="input_search" placeholder="请输入原密码" name="te_passport">
+<input type="text" class="input_search" placeholder="请输入原密码" name="te_password">
 <br>
-    <input type="text" class="input_search" placeholder="请输入新密码" name="new_passport"><br>
-    <input type="text" class="input_search" placeholder="请再次输入新密码" name="te_new_passport">
+    <input type="text" class="input_search" placeholder="请输入新密码" name="new_password"><br>
+    <input type="text" class="input_search" placeholder="请再次输入新密码" name="te_new_password">
         <br><input type="submit" value="提交">
 
     </form></div></center>
