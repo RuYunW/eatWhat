@@ -61,7 +61,7 @@
         <br>
         <%=session.getAttribute("username")%>
         <br><br><br>
-            修改密码
+            <a href="manager_page/change_passport.jsp">修改密码</a>
         </div>
 
 
