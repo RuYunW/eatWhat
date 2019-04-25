@@ -12,6 +12,7 @@
     <title>Title</title>
 </head>
 <body>
+
 <%
     String te_password = request.getParameter("te_password");
     UsersDao usersDao = new UsersDao();
