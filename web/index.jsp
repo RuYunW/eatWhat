@@ -17,7 +17,7 @@
 </head>
 
 
-<body style="background:url(imgs/BG_eat.jpg) no-repeat;background-size:100%;float: bottom;background-attachment: fixed;background-position-y:90%;  ">
+<body class="body">
 <%--<body style="background-size:100%;background-attachment:fixed;background-position-y: 90%; ">--%>
 <%--<%@include file="frame_tag.jsp"%>--%>
 <%--标题--%>
@@ -76,5 +76,5 @@
     </div>
 </div>
 
-<div class="bottom"><hr><a class="link" href="manager_login.jsp">管理员入口</a><hr></div>
+<div class="bottom"><a class="link" href="manager_login.jsp">管理员入口</a></div>
 </body></html>
