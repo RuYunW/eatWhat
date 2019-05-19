@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%@ page import="com.wry.jdbc.dao.FoodRandomDao,com.wry.jdbc.domain.Food" %>
+<%@ page import="com.wry.jdbc.domain.Store" %>
+<%@ page import="com.wry.jdbc.dao.StoreDao" %>
 
 <%
     String path = request.getContextPath();
@@ -42,14 +44,14 @@
     <%--左边switch--%>
     <div class="tag_switch">
 
-        <a class="manager" href="manager_page.jsp"><div class="tag_manager">管理主界面</div></a>
-        <a class="manager" href="manager_page/manager_food.jsp"><div class="tag_manager_selected">菜品管理</div></a>
-        <a class="manager" href="manager_page/manager_link.jsp"><div class="tag_manager">相关链接管理</div></a>
-        <a class="manager" href="manager_page/manager_ads.jsp"><div class="tag_manager">广告赞助管理</div></a>
-        <a class="manager" href="manager_page/manager_diet.jsp"><div class="tag_manager">科学搭配管理</div></a>
-        <a class="manager" href="manager_page/manager_newfood.jsp"><div class="tag_manager">新上菜品管理</div></a>
-        <a class="manager" href="manager_page/manager_data.jsp"><div class="tag_manager" >数据查看</div></a>
-        <a class="manager" href="manager_page/manage_user.jsp"><div class="tag_manager">用户管理</div></a>
+        <a class="manager" href="top_manager_page/manager_page.jsp"><div class="tag_manager">管理主界面</div></a>
+        <a class="manager" href="top_manager_page/manager_food.jsp"><div class="tag_manager_selected">菜品管理</div></a>
+        <a class="manager" href="top_manager_page/manager_link.jsp"><div class="tag_manager">相关链接管理</div></a>
+        <a class="manager" href="top_manager_page/manager_ads.jsp"><div class="tag_manager">广告赞助管理</div></a>
+        <a class="manager" href="top_manager_page/manager_diet.jsp"><div class="tag_manager">科学搭配管理</div></a>
+        <a class="manager" href="top_manager_page/manager_newfood.jsp"><div class="tag_manager">新上菜品管理</div></a>
+        <a class="manager" href="top_manager_page/manager_data.jsp"><div class="tag_manager" >数据查看</div></a>
+        <a class="manager" href="top_manager_page/manage_user.jsp"><div class="tag_manager">用户管理</div></a>
 
     </div>
 
@@ -61,23 +63,23 @@
             <table style="font-family: '等线 Light';font-size:larger;text-align: left;margin-left: 5%;margin-top: 5%;">
                 <tr>
                     <%--<th>编号</th>--%>
-                    <th>名称</th>
-                    <th>地点</th>
-                    <th>具体位置</th>
-                    <th>价格</th>
+                    <th>名称</th><th>价格</th><th>店铺编码</th><th>店铺名称</th><th>具体位置</th>
                 </tr>
 
                 <%
                     FoodRandomDao foodRandomDao = new FoodRandomDao();
                     ArrayList<Food> list = foodRandomDao.findAll();
+//                    Store store = new Store();
+                    StoreDao storeDao = new StoreDao();
                     for(int i=0;i<list.size();i++){
 //                out.println(list.get(i).getFoodname()+"   "+list.get(i).getFoodloc()+"   "+list.get(i).getFoodprice()+"<br>");
                         out.print("<tr>"
 //                        +"<td>"+list.get(i).getId()+"</td>"
                                 +"<td>"+list.get(i).getFoodname()+"</td>"
-                                +"<td>"+list.get(i).getFoodloc()+"</td>"
-                                +"<td>"+list.get(i).getDetailloc()+"</td>"
                                 +"<td>"+list.get(i).getFoodprice()+"</td>"
+                                +"<td>"+list.get(i).getFood_store_id()+"</td>"
+                                +"<td>"+storeDao.find(list.get(i).getFood_store_id()).getStoreName()+"</td>"
+                                +"<td>"+storeDao.find(list.get(i).getFood_store_id()).getStoreLoc()+"</td>"
                                 +"</tr>");
                     }
 //            for(int a:list)System.out.println(a);
