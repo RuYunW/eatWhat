@@ -23,49 +23,50 @@ public class InsertRegister extends HttpServlet {
 //        }
         if(request.getParameter("bigLoc")!=null && request.getParameter("smallLoc")!=null) {
             User user = new User();
-            user.setUsername((String)session.getAttribute("register_username"));
-            user.setPassword((String)session.getAttribute("register_password"));
-            user.setEmail((String) session.getAttribute("manager_email"));
+
             String store_id = "";
             String bigLoc=(String)request.getParameter("bigLoc");
             String smallLoc = (String)request.getParameter("smallLoc");
-            if (bigLoc.equals("一餐")) {
+            if (bigLoc.equals("01")) {
                 store_id += "01";
-                if (smallLoc.equals("一楼")){
+                if (smallLoc.equals("1")){
                     store_id+="0101";
                 }
-                else if(smallLoc.equals("二楼北")){
+                else if(smallLoc.equals("2")){
                     store_id+="0201";
                 }
-                else if(smallLoc.equals("二楼南")){
+                else if(smallLoc.equals("3")){
                     store_id+="0202";
                 }
-                else if(smallLoc.equals("三楼北")){
+                else if(smallLoc.equals("4")){
                     store_id+="0301";
                 }
-                else if(smallLoc.equals("三楼南")){
+                else if(smallLoc.equals("5")){
                     store_id+="0302";
                 }
                 else {
                     store_id+="0000";
                 }
-            } else if (bigLoc.equals("二餐")) {
+            } else if (bigLoc.equals("02")) {
                 store_id += "02";
-                if(smallLoc.equals("一楼")){
+                if(smallLoc.equals("1")){
                     store_id+="0101";
                 }
-                else if(smallLoc.equals("二楼")){
+                else if(smallLoc.equals("2")){
                     store_id+="0201";
                 }
-                else if(smallLoc.equals("三楼")){
+                else if(smallLoc.equals("3")){
                     store_id+="0301";
+                }
+                else if(smallLoc!=null){
+                    store_id+="1111";
                 }
                 else {
                     store_id+="0000";
                 }
-            } else if (bigLoc.equals("A区")) {
+            } else if (bigLoc.equals("A")) {
                 store_id += "03";
-                if(smallLoc.equals("一楼")) {
+                if(smallLoc.equals("1")) {
                     store_id+="0101";
                 }
                 else {
@@ -73,16 +74,16 @@ public class InsertRegister extends HttpServlet {
                 }
             } else {
                 store_id += "04";
-                if(smallLoc.equals("银座商业街")){
+                if(smallLoc.equals("1")){
                     store_id+="0001";
                 }
-                else if(smallLoc.equals("数娱广场")){
+                else if(smallLoc.equals("2")){
                     store_id+="0002";
                 }
-                else if(smallLoc.equals("蜜桃百货")){
+                else if(smallLoc.equals("3")){
                     store_id+="0003";
                 }
-                else if(smallLoc.equals("其他")){
+                else if(smallLoc.equals("4")){
                     store_id+="0004";
                 }
                 else {
@@ -99,6 +100,9 @@ public class InsertRegister extends HttpServlet {
             store_id+=add_id;
             session.setAttribute("storeID",store_id);
             user.setManager_store_id(store_id);
+            user.setUsername((String)session.getAttribute("register_username"));
+            user.setPassword((String)session.getAttribute("register_password"));
+            user.setEmail((String) session.getAttribute("manager_email"));
 
             //插入数据到数据库
             usersDao.insert(user);
